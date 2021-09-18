@@ -58,28 +58,30 @@ public class LZW {
         
         int size=numbers.size(); 
         for (int i=0; i<size; i++){
-            if (i<numbers.size()-1){ // makess sure that you wont get out of bounds 
-                current=numbers.get(i); // gets first thing in arraylist
-                next=numbers.get(i+1); // gets second thing in arraylist
-                if (next<dictLength){ // checks to see that next is already in the dictionary
-                    wordC=map.get(current); // converts the numbers into a string 
-                    wordN=map.get(next); // same as above but for next 
-                    combined=wordC+wordN.substring(0,1);
-                    word+=combined;// combines current and next's first letter
-                    map.put(dictLength,combined); // puts the new combined letters into the dictionary 
-                    dictLength++;// increments counter to fit the new size of map
-                } 
-                else{
-                    wordN=map.get(current); // sets WordN to the current word 
-                    String letter=wordN.substring(0,1); // gets the first letter of the next word 
-                    wordN=wordN+letter; // sets wordN to wordN to the first letter of WordN
-                    word += wordN;
-                    map.put(dictLength,wordN); // adds to Hashmap
-                    dictLength++; // increments counter
-                }
-               ; 
+            if (i<size-1) // makess sure that you wont get out of bounds
+            {
+            		current=numbers.get(i); // gets first thing in arraylist
+            		next=numbers.get(i+1); // gets second thing in arraylist
+                    if (next<dictLength){ // checks to see that next is already in the dictionary
+                    	
+                    	wordC=map.get(current); // converts the numbers into a string 
+                        wordN=map.get(next); // same as above but for next 
+                        combined=wordC+wordN.substring(0,1);
+                        word+=combined;// combines current and next's first letter
+                        map.put(dictLength,combined); // puts the new combined letters into the dictionary 
+                        dictLength++;// increments counter to fit the new size of map
+                    } 
+                    else
+                    {
+                        wordN=map.get(current); // sets WordN to the current word 
+                        String letter=wordN.substring(0,1); // gets the first letter of the next word 
+                        wordN=wordN+letter; // sets wordN to wordN to the first letter of WordN
+                        word += wordN;
+                        map.put(dictLength,wordN); // adds to Hashmap
+                        dictLength++; // increments counter
+                    }
+            	}
             }
-        }
         /*for (int i=0; i<numbers.size(); i++){
             int index=numbers.get(i); 
            word+=map.get(index); 
@@ -88,7 +90,7 @@ public class LZW {
     }
     
     public static void main(String[] args) throws IOException {
-    	final long startTime = System.nanoTime();
+    	final long startTime = System.currentTimeMillis();
     	String filename = ("lzw-file3.txt");
         BufferedReader br = null;
         String line = "";
@@ -104,7 +106,7 @@ public class LZW {
         }finally {
             br.close();
         }
-        final long endTime = System.nanoTime();
+        final long endTime = System.currentTimeMillis();
         System.out.println("Total execution time: " + (endTime - startTime));
     }
 } 

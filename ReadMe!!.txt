@@ -11,4 +11,4 @@ Hello person who is going to get this project! My decoder is working and everyth
 To Mr. Theiss: 
 	I wasn't able to fork Colin's code because the upload was weird. Therefore, I just copied and pasted his code into sublime. 
 
-Alex: Initial run time in nano seconds was 49356612.
+Alex: Initial run time in milliseconds is 44.
