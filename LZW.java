@@ -67,7 +67,7 @@ public class LZW {
                     	wordC=map.get(current); // converts the numbers into a string 
                         wordN=map.get(next); // same as above but for next 
                         combined=wordC+wordN.substring(0,1);
-                        word+=combined;// combines current and next's first letter
+                        word+=combined;//this is my optimized line. Concatenates output string within method instead of in for loop.
                         map.put(dictLength,combined); // puts the new combined letters into the dictionary 
                         dictLength++;// increments counter to fit the new size of map
                     } 
@@ -76,7 +76,7 @@ public class LZW {
                         wordN=map.get(current); // sets WordN to the current word 
                         String letter=wordN.substring(0,1); // gets the first letter of the next word 
                         wordN=wordN+letter; // sets wordN to wordN to the first letter of WordN
-                        word += wordN;
+                        word += wordN;//this is my optimized line. Concatenates output string within method instead of in for loop.
                         map.put(dictLength,wordN); // adds to Hashmap
                         dictLength++; // increments counter
                     }
